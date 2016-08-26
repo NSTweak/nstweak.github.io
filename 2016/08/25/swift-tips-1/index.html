@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="Swift Tips (1)Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
-For willSet observers, the subclass observers are called">
+<meta name="description" content="Swift Tips (1)Overriding Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
+For willSet observers, the subclass observers">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Swift Tips (1)">
 <meta property="og:url" content="http://nstweak.github.io/2016/08/25/swift-tips-1/index.html">
 <meta property="og:site_name" content="NSTweak">
-<meta property="og:description" content="Swift Tips (1)Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
-For willSet observers, the subclass observers are called">
-<meta property="og:updated_time" content="2016-08-26T00:08:13.000Z">
+<meta property="og:description" content="Swift Tips (1)Overriding Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
+For willSet observers, the subclass observers">
+<meta property="og:updated_time" content="2016-08-26T02:49:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift Tips (1)">
-<meta name="twitter:description" content="Swift Tips (1)Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
-For willSet observers, the subclass observers are called">
+<meta name="twitter:description" content="Swift Tips (1)Overriding Property ObserversWhen you add property observers to inherited properties, the observers of superclass properties will be called.
+For willSet observers, the subclass observers">
 
 
 
@@ -286,13 +286,15 @@ For willSet observers, the subclass observers are called">
       
 
       
-        <h1 id="Swift-Tips-1"><a href="#Swift-Tips-1" class="headerlink" title="Swift Tips (1)"></a>Swift Tips (1)</h1><h2 id="Property-Observers"><a href="#Property-Observers" class="headerlink" title="Property Observers"></a>Property Observers</h2><p>When you add property observers to inherited properties, the observers of superclass properties will be called.</p>
+        <h1 id="Swift-Tips-1"><a href="#Swift-Tips-1" class="headerlink" title="Swift Tips (1)"></a>Swift Tips (1)</h1><h2 id="Overriding-Property-Observers"><a href="#Overriding-Property-Observers" class="headerlink" title="Overriding Property Observers"></a>Overriding Property Observers</h2><p>When you add property observers to inherited properties, the observers of superclass properties will be called.</p>
 <p>For <code>willSet</code> observers, the subclass observers are called before the superclass observers.</p>
 <p>And for <code>didSet</code> observers, the superclass observers are called before the subclass observers.</p>
 <p>You can enter the following code in a Swift Playground:</p>
 <figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Root</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> number: <span class="type">Int</span> = <span class="number">0</span> &#123;</div><div class="line">    <span class="keyword">willSet</span> &#123; <span class="built_in">print</span>(<span class="string">"willSet Number <span class="subst">\(newValue)</span> in Root"</span>) &#125;</div><div class="line">    <span class="keyword">didSet</span> &#123; <span class="built_in">print</span>(<span class="string">"didSet Number <span class="subst">\(number)</span> in Root"</span>) &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Branch</span>: <span class="title">Root</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="keyword">var</span> number: <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">willSet</span> &#123; <span class="built_in">print</span>(<span class="string">"willSet Number <span class="subst">\(newValue)</span> in Branch"</span>) &#125;</div><div class="line">    <span class="keyword">didSet</span> &#123; <span class="built_in">print</span>(<span class="string">"didSet Number <span class="subst">\(number)</span> in Branch"</span>) &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Leaf</span>: <span class="title">Branch</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="keyword">var</span> number: <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">willSet</span> &#123; <span class="built_in">print</span>(<span class="string">"willSet Number <span class="subst">\(newValue)</span> in Leaf"</span>) &#125;</div><div class="line">    <span class="keyword">didSet</span> &#123; <span class="built_in">print</span>(<span class="string">"didSet Number <span class="subst">\(number)</span> in Leaf"</span>) &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> leaf = <span class="type">Leaf</span>()</div><div class="line">leaf.number = <span class="number">10</span></div></pre></td></tr></table></figure>
 <p>And you can check the results in the console of Xcode:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">willSet Number 10 in Leaf</div><div class="line">willSet Number 10 in Branch</div><div class="line">willSet Number 10 in Root</div><div class="line">didSet Number 10 in Root</div><div class="line">didSet Number 10 in Branch</div><div class="line">didSet Number 10 in Leaf</div></pre></td></tr></table></figure>
+<p>Another thing you should know about overriding property observers is that observers of superclass properties are called when a property is set in the subclass initializer. The calling sequence is the same as the result above.</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Foundation</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Root</span> </span>&#123;</div><div class="line">  <span class="keyword">var</span> number: <span class="type">Int</span> = <span class="number">0</span> &#123;</div><div class="line">    <span class="keyword">willSet</span> &#123; <span class="built_in">print</span>(<span class="string">"willSet Number <span class="subst">\(newValue)</span> in Root"</span>) &#125;</div><div class="line">    <span class="keyword">didSet</span> &#123; <span class="built_in">print</span>(<span class="string">"didSet Number <span class="subst">\(number)</span> in Root"</span>) &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Leaf</span>: <span class="title">Root</span> </span>&#123;</div><div class="line">  <span class="keyword">override</span> <span class="keyword">var</span> number: <span class="type">Int</span> &#123;</div><div class="line">    <span class="keyword">willSet</span> &#123; <span class="built_in">print</span>(<span class="string">"willSet Number <span class="subst">\(newValue)</span> in Leaf"</span>) &#125;</div><div class="line">    <span class="keyword">didSet</span> &#123; <span class="built_in">print</span>(<span class="string">"didSet Number <span class="subst">\(number)</span> in Leaf"</span>) &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">override</span> <span class="keyword">init</span>() &#123;</div><div class="line">    <span class="keyword">super</span>.<span class="keyword">init</span>()</div><div class="line">    number = <span class="number">10</span></div><div class="line">  &#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">let</span> leaf = <span class="type">Leaf</span>()</div><div class="line"></div><div class="line"><span class="comment">// Results</span></div><div class="line"><span class="keyword">willSet</span> <span class="type">Number</span> <span class="number">10</span> <span class="keyword">in</span> <span class="type">Leaf</span></div><div class="line"><span class="keyword">willSet</span> <span class="type">Number</span> <span class="number">10</span> <span class="keyword">in</span> <span class="type">Root</span></div><div class="line"><span class="keyword">didSet</span> <span class="type">Number</span> <span class="number">10</span> <span class="keyword">in</span> <span class="type">Root</span></div><div class="line"><span class="keyword">didSet</span> <span class="type">Number</span> <span class="number">10</span> <span class="keyword">in</span> <span class="type">Leaf</span></div></pre></td></tr></table></figure>
 
       
     </div>
@@ -383,10 +385,10 @@ For willSet observers, the subclass observers are called">
       <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/avatar.gif"
+               src="/images/avatar.jpg"
                alt="mrahmiao" />
           <p class="site-author-name" itemprop="name">mrahmiao</p>
-          <p class="site-description motion-element" itemprop="description">an iOS / macOS developer</p>
+          <p class="site-description motion-element" itemprop="description">An iOS / macOS developer</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
@@ -450,7 +452,7 @@ For willSet observers, the subclass observers are called">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swift-Tips-1"><span class="nav-number">1.</span> <span class="nav-text">Swift Tips (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Property-Observers"><span class="nav-number">1.1.</span> <span class="nav-text">Property Observers</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swift-Tips-1"><span class="nav-number">1.</span> <span class="nav-text">Swift Tips (1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Overriding-Property-Observers"><span class="nav-number">1.1.</span> <span class="nav-text">Overriding Property Observers</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
