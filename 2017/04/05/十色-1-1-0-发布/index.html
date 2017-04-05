@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Jailbreak,越狱,Tips," />
+  <meta name="keywords" content="iOS,个人作品,Colors,十色," />
 
 
 
@@ -84,22 +84,25 @@
 
 
 
-<meta name="description" content="前段时间电脑里的 Reveal 从 1 升级到了 2，唔，现在已经是 5 了。
-用新版本的 Reveal 在 iPod 上看其它 App 的结构时会碰到无法加载的问题，本来打算在新版本的 Reveal 里面找一找 libReveal.dylib 这个动态库替换掉越狱设备里的同名文件，发现找不到，只有一个比较关键的 RevealServer 文件。
-查了一下，发现解决办法很简单。将 RevealSe">
+<meta name="description" content="新增：
+
+用于获取图片中主色的动作拓展
+主屏 3D Touch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="升级到 Reveal 2">
-<meta property="og:url" content="http://nstweak.github.io/2016/12/23/升级到-Reveal-2/index.html">
+<meta property="og:title" content="十色 1.1.0 发布">
+<meta property="og:url" content="http://nstweak.github.io/2017/04/05/十色-1-1-0-发布/index.html">
 <meta property="og:site_name" content="NSTweak">
-<meta property="og:description" content="前段时间电脑里的 Reveal 从 1 升级到了 2，唔，现在已经是 5 了。
-用新版本的 Reveal 在 iPod 上看其它 App 的结构时会碰到无法加载的问题，本来打算在新版本的 Reveal 里面找一找 libReveal.dylib 这个动态库替换掉越狱设备里的同名文件，发现找不到，只有一个比较关键的 RevealServer 文件。
-查了一下，发现解决办法很简单。将 RevealSe">
-<meta property="og:updated_time" content="2017-04-05T01:10:50.000Z">
+<meta property="og:description" content="新增：
+
+用于获取图片中主色的动作拓展
+主屏 3D Touch">
+<meta property="og:updated_time" content="2017-04-05T01:11:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="升级到 Reveal 2">
-<meta name="twitter:description" content="前段时间电脑里的 Reveal 从 1 升级到了 2，唔，现在已经是 5 了。
-用新版本的 Reveal 在 iPod 上看其它 App 的结构时会碰到无法加载的问题，本来打算在新版本的 Reveal 里面找一找 libReveal.dylib 这个动态库替换掉越狱设备里的同名文件，发现找不到，只有一个比较关键的 RevealServer 文件。
-查了一下，发现解决办法很简单。将 RevealSe">
+<meta name="twitter:title" content="十色 1.1.0 发布">
+<meta name="twitter:description" content="新增：
+
+用于获取图片中主色的动作拓展
+主屏 3D Touch">
 
 
 
@@ -120,9 +123,9 @@
 
 
 
-  <link rel="canonical" href="http://nstweak.github.io/2016/12/23/升级到-Reveal-2/"/>
+  <link rel="canonical" href="http://nstweak.github.io/2017/04/05/十色-1-1-0-发布/"/>
 
-  <title> 升级到 Reveal 2 | NSTweak </title>
+  <title> 十色 1.1.0 发布 | NSTweak </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -242,7 +245,7 @@
             
             
               
-                升级到 Reveal 2
+                十色 1.1.0 发布
               
             
           </h1>
@@ -254,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">Posted on</span>
-            <time itemprop="dateCreated" datetime="2016-12-23T12:28:40+08:00" content="Dec 23 2016">
-              Dec 23 2016
+            <time itemprop="dateCreated" datetime="2017-04-05T09:05:43+08:00" content="Apr 5 2017">
+              Apr 5 2017
             </time>
           </span>
 
@@ -265,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/23/升级到-Reveal-2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/12/23/升级到-Reveal-2/" itemprop="commentsCount"></span>
+                <a href="/2017/04/05/十色-1-1-0-发布/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2017/04/05/十色-1-1-0-发布/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -289,9 +292,11 @@
       
 
       
-        <p>前段时间电脑里的 Reveal 从 1 升级到了 2，唔，现在已经是 5 了。</p>
-<p>用新版本的 Reveal 在 iPod 上看其它 App 的结构时会碰到无法加载的问题，本来打算在新版本的 Reveal 里面找一找 libReveal.dylib 这个动态库替换掉越狱设备里的同名文件，发现找不到，只有一个比较关键的 <strong>RevealServer</strong> 文件。</p>
-<p>查了一下，发现解决办法很简单。将 <strong>RevealServer</strong> 重命名为 <strong>libReveal.dylib</strong>，并替换掉越狱设备中 <em>/Library/RHRevealLoader</em> 文件夹下同名文件即可。</p>
+        <p>新增：</p>
+<ol>
+<li>用于获取图片中主色的动作拓展</li>
+<li>主屏 3D Touch</li>
+</ol>
 
       
     </div>
@@ -314,11 +319,13 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Jailbreak/" rel="tag">#Jailbreak</a>
+            <a href="/tags/iOS/" rel="tag">#iOS</a>
           
-            <a href="/tags/越狱/" rel="tag">#越狱</a>
+            <a href="/tags/个人作品/" rel="tag">#个人作品</a>
           
-            <a href="/tags/Tips/" rel="tag">#Tips</a>
+            <a href="/tags/Colors/" rel="tag">#Colors</a>
+          
+            <a href="/tags/十色/" rel="tag">#十色</a>
           
         </div>
       
@@ -327,17 +334,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/08/25/swift-tips-1/" rel="next" title="Swift Tips (1)">
-                <i class="fa fa-chevron-left"></i> Swift Tips (1)
+              <a href="/2016/12/23/升级到-Reveal-2/" rel="next" title="升级到 Reveal 2">
+                <i class="fa fa-chevron-left"></i> 升级到 Reveal 2
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/05/十色-1-1-0-发布/" rel="prev" title="十色 1.1.0 发布">
-                十色 1.1.0 发布 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -598,9 +601,9 @@
 
     <script type="text/javascript">
       var disqus_shortname = 'mrahmiao';
-      var disqus_identifier = '2016/12/23/升级到-Reveal-2/';
-      var disqus_title = "升级到 Reveal 2";
-      var disqus_url = 'http://nstweak.github.io/2016/12/23/升级到-Reveal-2/';
+      var disqus_identifier = '2017/04/05/十色-1-1-0-发布/';
+      var disqus_title = "十色 1.1.0 发布";
+      var disqus_url = 'http://nstweak.github.io/2017/04/05/十色-1-1-0-发布/';
 
       function run_disqus_script(disqus_script){
         var dsq = document.createElement('script');
